@@ -23,7 +23,7 @@ require 'rexml/document'
 
 options = {}
 
-OptionParser.new do |opts|
+opts =OptionParser.new do |opts|
   opts.banner = "Usage: gfs.rb [options]"
   opts.on("-v", "--verbose", "Run verbosely") do |v|
     options[:verbose] = v
@@ -44,7 +44,8 @@ OptionParser.new do |opts|
     puts opts
     exit
   end
-end.parse!
+end
+
 
 # Load the named file and return its contents as a string
 def get_file_as_string(filename)
@@ -93,7 +94,7 @@ def post(io, url, user, pass, soap_action)
   io = StringIO.new(io) if io.is_a? String
 
   req = Net::HTTP::Post.new(url.path)
-  req.basic_auth user, pass
+  req.basic_auth user, pass if user && user.length > 0
   req.body_stream = io
   req.add_field('SOAPAction', soap_action)
   req.content_type = 'application/soap+xml'
@@ -114,6 +115,11 @@ def post(io, url, user, pass, soap_action)
   end
 end
 
+opts.parse!
+if (!options[:query] || !options[:url] )
+  puts(opts.help)
+  exit 1
+end
 
 xmlIn = get_file_as_string(options[:query])
 wmlTypeIn = extract_type(xmlIn)
