@@ -21,7 +21,7 @@ require 'uri'
 require 'stringio'
 require 'rexml/document'
 
-options = {}
+options = {:action=>:get}
 
 opts =OptionParser.new do |opts|
   opts.banner = "Usage: gfs.rb [options]"
@@ -38,6 +38,9 @@ opts =OptionParser.new do |opts|
     options[:password] = v
   end
   opts.on("-q", "--query QUERYFILE", "Path to file containing query, delete, add or update template") do |v|
+    options[:query] = v
+  end
+  opts.on("-a", "--action [get|add|update|delete]", "WITSML action; default is 'get'") do |v|
     options[:query] = v
   end
   opts.on_tail("-h", "--help", "Show this message") do
@@ -116,32 +119,74 @@ def post(io, url, user, pass, soap_action)
 end
 
 opts.parse!
-if (!options[:query] || !options[:url] )
+if ( !options[:url] )
   puts(opts.help)
   exit 1
 end
 
-xmlIn = get_file_as_string(options[:query])
-wmlTypeIn = extract_type(xmlIn)
-queryIn = escape_xml(xmlIn);
 optionsIn = ''
 capabilitiesIn = ''
 
-envelope = <<END
+envelope_begin = <<END
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
     xmlns:ns0="http://www.witsml.org/message/120">
     <SOAP-ENV:Header/>
     <SOAP-ENV:Body>
+END
+
+envelope_end = <<END
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+END
+
+template= get_file_as_string(options[:query] || STDIN)
+wmlTypeIn = extract_type(template)
+queryIn = escape_xml(template)
+
+case options[:action]
+  when :add
+  soap_action = 'http://www.witsml.org/action/120/Store.WMLS_AddToStore'
+  envelope_middle = <<END
+        <ns0:WMLS_AddToStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
+            <XMLin>#{queryIn}</XMLin>
+            <OptionsIn>#{optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
+        </ns0:WMLS_AddToStore>
+END
+  when :delete
+  soap_action = 'http://www.witsml.org/action/120/Store.WMLS_DeleteFromStore'
+  envelope_middle = <<END
         <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <QueryIn>#{queryIn}</QueryIn>
             <OptionsIn>#{optionsIn}</OptionsIn>
             <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_GetFromStore>
-    </SOAP-ENV:Body>
-</SOAP-ENV:Envelope>
 END
-soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetFromStore'
+  when :update
+  soap_action = 'http://www.witsml.org/action/120/Store.WMLS_UpdateInStore'
+  envelope_middle = <<END
+        <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
+            <XMLin>#{queryIn}</XMLin>
+            <OptionsIn>#{optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
+        </ns0:WMLS_GetFromStore>
+END
+  else
+  soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetFromStore'
+  envelope_middle = <<END
+        <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
+            <QueryIn>#{queryIn}</QueryIn>
+            <OptionsIn>#{optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
+        </ns0:WMLS_GetFromStore>
+END
+end
+
+envelope = envelope_begin + envelope_middle + envelope_end;
 response = post(envelope, options[:url],  options[:user_name], options[:password], soap_action)
 
 status, supp_msg, witsml = extract_response(response.body)
