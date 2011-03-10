@@ -21,27 +21,27 @@ require 'uri'
 require 'stringio'
 require 'rexml/document'
 
-options = {:action=>:get}
+options = {}
 
 opts =OptionParser.new do |opts|
   opts.banner = "Usage: wmls.rb [options]"
-  opts.on("-v", "--verbose", "Run verbosely") do |v|
-    options[:verbose] = v
-  end
+#  opts.on("-v", "--verbose", "Run verbosely") do |v|
+#    options[:verbose] = v
+#  end
   opts.on("-r", "--url url", "URL of the WITSML service") do |v|
     options[:url] = v
   end
-  opts.on("-u", "--username USER", "HTTP user name") do |v|
+  opts.on("-u", "--username USER", "HTTP user name (optional)") do |v|
     options[:user_name] = v
   end
-  opts.on("-p", "--password PASS", "HTTP password") do |v|
+  opts.on("-p", "--password PASS", "HTTP password (optional)") do |v|
     options[:password] = v
   end
-  opts.on("-q", "--query QUERYFILE", "Path to file containing query, delete, add or update template") do |v|
+  opts.on("-q", "--query QUERYFILE", "Path to file containing query, delete, add or update template. (optional, default stdin)") do |v|
     options[:query] = v
   end
-  opts.on("-a", "--action get|add|update|delete", "WITSML action; default is 'get'") do |v|
-    options[:action] = v
+  opts.on("-a", "--action get|add|update|delete", "WITSML action; (optional, default 'get')") do |v|
+    options[:action] = v || 'get'
   end
   opts.on_tail("-h", "--help", "Show this message") do
     puts opts
