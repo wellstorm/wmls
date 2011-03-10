@@ -40,8 +40,8 @@ opts =OptionParser.new do |opts|
   opts.on("-q", "--query QUERYFILE", "Path to file containing query, delete, add or update template. (optional, default stdin)") do |v|
     options[:query] = v
   end
-  opts.on("-a", "--action get|add|update|delete", "WITSML action; (optional, default 'get')") do |v|
-    options[:action] = v || 'get'
+  opts.on("-a", "--action ACTION", [:add,:get,:update,:delete], "WITSML action: add, get, update, or delete (optional, default 'get')") do |v|
+    options[:action] = v || :get
   end
   opts.on_tail("-h", "--help", "Show this message") do
     puts opts
@@ -162,22 +162,22 @@ END
   when :delete
   soap_action = 'http://www.witsml.org/action/120/Store.WMLS_DeleteFromStore'
   envelope_middle = <<END
-        <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+        <ns0:WMLS_DeleteFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <QueryIn>#{queryIn}</QueryIn>
             <OptionsIn>#{optionsIn}</OptionsIn>
             <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
-        </ns0:WMLS_GetFromStore>
+        </ns0:WMLS_DeleteFromStore>
 END
   when :update
   soap_action = 'http://www.witsml.org/action/120/Store.WMLS_UpdateInStore'
   envelope_middle = <<END
-        <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+        <ns0:WMLS_UpdateInStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <XMLin>#{queryIn}</XMLin>
             <OptionsIn>#{optionsIn}</OptionsIn>
             <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
-        </ns0:WMLS_GetFromStore>
+        </ns0:WMLS_UpdateInStore>
 END
   else
   soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetFromStore'
