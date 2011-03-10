@@ -24,7 +24,7 @@ require 'rexml/document'
 options = {:action=>:get}
 
 opts =OptionParser.new do |opts|
-  opts.banner = "Usage: gfs.rb [options]"
+  opts.banner = "Usage: wmls.rb [options]"
   opts.on("-v", "--verbose", "Run verbosely") do |v|
     options[:verbose] = v
   end
@@ -53,7 +53,12 @@ end
 # Load the named file and return its contents as a string
 def get_file_as_string(filename)
   data = ''
-  f = File.open(filename, "r") 
+  if(filename)
+    f = File.open(filename, "r")
+  else
+    f = $stdin
+  end
+
   f.each_line do |line|
     data += line
   end
@@ -139,7 +144,7 @@ envelope_end = <<END
 </SOAP-ENV:Envelope>
 END
 
-template= get_file_as_string(options[:query] || STDIN)
+template= get_file_as_string(options[:query] )
 wmlTypeIn = extract_type(template)
 queryIn = escape_xml(template)
 
