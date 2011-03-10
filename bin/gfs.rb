@@ -22,6 +22,7 @@ require 'stringio'
 require 'rexml/document'
 
 options = {}
+
 OptionParser.new do |opts|
   opts.banner = "Usage: gfs.rb [options]"
   opts.on("-v", "--verbose", "Run verbosely") do |v|
@@ -36,7 +37,7 @@ OptionParser.new do |opts|
   opts.on("-p", "--password PASS", "HTTP password") do |v|
     options[:password] = v
   end
-  opts.on("-q", "--query QUERY", "Path to file containing query template") do |v|
+  opts.on("-q", "--query QUERYFILE", "Path to file containing query, delete, add or update template") do |v|
     options[:query] = v
   end
   opts.on_tail("-h", "--help", "Show this message") do
@@ -45,8 +46,7 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-p options
-
+# Load the named file and return its contents as a string
 def get_file_as_string(filename)
   data = ''
   f = File.open(filename, "r") 
@@ -56,19 +56,41 @@ def get_file_as_string(filename)
   return data
 end
 
-def escape_xml(xmlIn) 
-  return xmlIn.gsub(/&/,'&amp;').gsub(/</,'&lt;')
+# Replace special xml chartacters '&' and '<'
+def escape_xml(xml_in) 
+  return xml_in.gsub(/&/,'&amp;').gsub(/</,'&lt;')
 end
 
+def pretty_xml(xml_data)
+  s = ''
+  doc = REXML::Document.new(xml_data)
+  doc.write(s, 2)
+  return s
+end
+
+# parse the xml and return the singular of the root element name.
 def extract_type(xml_data)
   doc = REXML::Document.new(xml_data)
   plural = doc.root.name
   return plural[0..plural.length-2]
 end
 
+#extract the witsml response: status_code and xml_out
+def extract_response(xml_data)
+  doc = REXML::Document.new(xml_data)
+  r = 0
+  x = ''
+  s = ''
+  doc.root.each_element('//Result') { |elt| r = elt.text}  
+  doc.root.each_element('//XMLout') { |elt| x = pretty_xml(elt.text)}  
+  doc.root.each_element('//SuppMsgOut') { |elt| s = elt.text }  
+  return [r.to_i,s,x];
+end
+
+
 def post(io, url, user, pass, soap_action)    
-  url = URI.parse(url)
-  io = StringIO.new(io)
+  url = URI.parse(url)  if url.is_a? String
+  io = StringIO.new(io) if io.is_a? String
 
   req = Net::HTTP::Post.new(url.path)
   req.basic_auth user, pass
@@ -116,6 +138,9 @@ END
 soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetFromStore'
 response = post(envelope, options[:url],  options[:user_name], options[:password], soap_action)
 
-
-#p envelope
-p  response.body
+status, supp_msg, witsml = extract_response(response.body)
+if (status != 1)
+  $stderr.puts "Error #{status}: #{supp_msg}"
+else
+  $stdout.puts witsml
+end
