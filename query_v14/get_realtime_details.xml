@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<realtimes xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <realtime uidWell="%uidWell%" uidWellbore="%uidWellbore%" idSub="%idSub%">
+      <dTim />
+      <md uom="" datum="" />
+      <sequence />
+      <dTimHeaderLastChanged />
+      <activityCode />
+      <detailActivity />
+      <dataGroup />
+      <realtimeHeader>
+         <nameWell />
+         <nameWellbore />
+         <serviceCompany />
+         <runNumber />
+         <bhaRunNumber />
+         <pass />
+         <creationDate />
+         <description />
+         <groupDefinition>
+            <id />
+            <multiplexed />
+            <dataGroup />
+            <interval>
+               <type />
+               <method />
+               <timeInterval uom="" />
+               <distanceInterval uom="" />
+            </interval>
+            <persistedAsLog uidRef="" />
+            <persistedAsWellLog uidRef="" />
+            <comment />
+            <channelDefinition>
+               <mnemonic />
+               <dataType />
+               <classWitsml />
+               <classIndex />
+               <columnIndex />
+               <unit />
+               <description />
+               <mnemAlias />
+               <sensorOffset uom="" />
+               <dataSource />
+               <interval>
+                  <type />
+                  <method />
+                  <timeInterval uom="" />
+                  <distanceInterval uom="" />
+               </interval>
+               <axisDefinition uid="">
+                  <order />
+                  <count />
+                  <name />
+                  <propertyType />
+                  <uom />
+                  <doubleValues />
+                  <stringValues />
+                  <extensionNameValue uid="">
+                     <name />
+                     <value uom="" />
+                     <dataType />
+                     <dTim />
+                     <md uom="" datum="" />
+                     <index />
+                     <measureClass />
+                     <description />
+                  </extensionNameValue>
+               </axisDefinition>
+               <extensionNameValue uid="">
+                  <name />
+                  <value uom="" />
+                  <dataType />
+                  <dTim />
+                  <md uom="" datum="" />
+                  <index />
+                  <measureClass />
+                  <description />
+               </extensionNameValue>
+            </channelDefinition>
+            <extensionNameValue uid="">
+               <name />
+               <value uom="" />
+               <dataType />
+               <dTim />
+               <md uom="" datum="" />
+               <index />
+               <measureClass />
+               <description />
+            </extensionNameValue>
+         </groupDefinition>
+      </realtimeHeader>
+      <channel>
+         <id />
+         <mnemonic />
+         <dTim />
+         <md uom="" datum="" />
+         <value uom="" />
+         <densData uom="" />
+         <qualData />
+         <fet uom="" />
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </channel>
+      <record>
+         <id />
+         <seq />
+         <dTim />
+         <md uom="" datum="" />
+         <value uom="" />
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </record>
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <serviceCategory />
+         <comments />
+         <acquisitionTimeZone dTim="" />
+         <extensionAny />
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </commonData>
+      <customData />
+   </realtime>
+</realtimes>

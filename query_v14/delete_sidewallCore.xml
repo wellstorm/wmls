@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sidewallCores xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <sidewallCore uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidSidewallCore%" />
+</sidewallCores>

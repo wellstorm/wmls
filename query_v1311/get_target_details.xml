@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<targets xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+   <target uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidTarget%">
+      <nameWell />
+      <nameWellbore />
+      <name />
+      <parentTarget uidRef="" />
+      <dispNsCenter uom="" />
+      <dispEwCenter uom="" />
+      <tvd uom="" datum="" />
+      <dispNsOffset uom="" />
+      <dispEwOffset uom="" />
+      <thickAbove uom="" />
+      <thickBelow uom="" />
+      <dip uom="" />
+      <strike uom="" />
+      <rotation uom="" />
+      <lenMajorAxis uom="" />
+      <widMinorAxis uom="" />
+      <typeTargetScope />
+      <dispNsSectOrig uom="" />
+      <dispEwSectOrig uom="" />
+      <aziRef />
+      <catTarg />
+      <location uid="">
+         <wellCRS uidRef="" />
+         <latitude uom="" />
+         <longitude uom="" />
+         <easting uom="" />
+         <northing uom="" />
+         <westing uom="" />
+         <southing uom="" />
+         <projectedX uom="" />
+         <projectedY uom="" />
+         <localX uom="" />
+         <localY uom="" />
+         <original />
+         <description />
+      </location>
+      <targetSection uid="">
+         <sectNumber />
+         <typeTargetSectionScope />
+         <lenRadius uom="" />
+         <angleArc uom="" />
+         <thickAbove uom="" />
+         <thickBelow uom="" />
+         <location uid="">
+            <wellCRS uidRef="" />
+            <latitude uom="" />
+            <longitude uom="" />
+            <easting uom="" />
+            <northing uom="" />
+            <westing uom="" />
+            <southing uom="" />
+            <projectedX uom="" />
+            <projectedY uom="" />
+            <localX uom="" />
+            <localY uom="" />
+            <original />
+            <description />
+         </location>
+      </targetSection>
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <comments />
+      </commonData>
+      <customData />
+   </target>
+</targets>

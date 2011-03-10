@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<logs xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <log uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidLog%">
+      <nameWell />
+      <nameWellbore />
+      <name />
+      <objectGrowing />
+      <curveSensorsAligned />
+      <dataGroup />
+      <dataRowCount />
+      <serviceCompany />
+      <runNumber />
+      <bhaRunNumber />
+      <pass />
+      <creationDate />
+      <description />
+      <dataDelimiter />
+      <indexType />
+      <startIndex uom="" />
+      <endIndex uom="" />
+      <stepIncrement uom="" numerator="" denominator="" />
+      <startDateTimeIndex />
+      <endDateTimeIndex />
+      <direction />
+      <indexCurve columnIndex="" />
+      <nullValue />
+      <logParam index="" name="" uom="" description="" />
+      <logCurveInfo uid="">
+         <mnemonic />
+         <classWitsml />
+         <classIndex />
+         <unit />
+         <mnemAlias />
+         <nullValue />
+         <alternateIndex />
+         <wellDatum uidRef="" />
+         <minIndex uom="" />
+         <maxIndex uom="" />
+         <minDateTimeIndex />
+         <maxDateTimeIndex />
+         <columnIndex />
+         <curveDescription />
+         <sensorOffset uom="" />
+         <dataSource />
+         <densData uom="" />
+         <traceState />
+         <traceOrigin />
+         <typeLogData />
+         <axisDefinition uid="">
+            <order />
+            <count />
+            <name />
+            <propertyType />
+            <uom />
+            <doubleValues />
+            <stringValues />
+            <extensionNameValue uid="">
+               <name />
+               <value uom="" />
+               <dataType />
+               <dTim />
+               <md uom="" datum="" />
+               <index />
+               <measureClass />
+               <description />
+            </extensionNameValue>
+         </axisDefinition>
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </logCurveInfo>
+      <!-- No logData. -->
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <serviceCategory />
+         <comments />
+         <acquisitionTimeZone dTim="" />
+         <extensionAny />
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </commonData>
+      <customData />
+   </log>
+</logs>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sidewallCores xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+   <sidewallCore uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidSidewallCore%">
+      <nameWell />
+      <nameWellbore />
+      <name />
+      <dTimToolRun />
+      <dTimToolPull />
+      <mdToolReference uom="" datum="" />
+      <coreReferenceLog />
+      <mdCore uom="" datum="" />
+      <serviceCompany />
+      <analysisContractor />
+      <analysisBy />
+      <sidewallCoringTool />
+      <diaHole uom="" />
+      <diaPlug uom="" />
+      <numPlugsShot />
+      <numRecPlugs />
+      <numMisfiredPlugs />
+      <numEmptyPlugs />
+      <numLostPlugs />
+      <numPaidPlugs />
+      <swcSample uid="">
+         <md uom="" datum="" />
+         <lithology uid="">
+            <type />
+            <codeLith />
+            <lithPc uom="" />
+            <description />
+            <lithClass />
+            <grainType />
+            <dunhamClass />
+            <color />
+            <texture />
+            <hardness />
+            <sizeGrain />
+            <roundness />
+            <sorting />
+            <matrixCement />
+            <porosityVisible />
+            <permeability />
+            <densShale uom="" />
+            <qualifier uid="">
+               <type />
+               <mdTop uom="" datum="" />
+               <mdBottom uom="" datum="" />
+               <abundance uom="" />
+               <abundanceCode />
+               <description />
+            </qualifier>
+         </lithology>
+         <show>
+            <showRat />
+            <stainColor />
+            <stainDistr />
+            <stainPc uom="" />
+            <natFlorColor />
+            <natFlorPc uom="" />
+            <natFlorLevel />
+            <natFlorDesc />
+            <cutColor />
+            <cutSpeed />
+            <cutStrength />
+            <cutForm />
+            <cutLevel />
+            <cutFlorColor />
+            <cutFlorSpeed />
+            <cutFlorStrength />
+            <cutFlorForm />
+            <cutFlorLevel />
+            <residueColor />
+            <showDesc />
+            <impregnatedLitho />
+            <odor />
+         </show>
+         <nameFormation />
+         <comments />
+      </swcSample>
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <comments />
+      </commonData>
+      <customData />
+   </sidewallCore>
+</sidewallCores>

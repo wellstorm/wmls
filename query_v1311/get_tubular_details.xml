@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tubulars xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+   <tubular uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidTubular%">
+      <nameWell />
+      <nameWellbore />
+      <name />
+      <typeTubularAssy />
+      <valveFloat />
+      <sourceNuclear />
+      <diaHoleAssy uom="" />
+      <tubularComponent uid="">
+         <typeTubularComp />
+         <sequence />
+         <description />
+         <id uom="" />
+         <od uom="" />
+         <odMx uom="" />
+         <len uom="" />
+         <lenJointAv uom="" />
+         <numJointStand />
+         <wtPerLen uom="" />
+         <grade />
+         <odDrift uom="" />
+         <tensYield uom="" />
+         <tqYield uom="" />
+         <stressFatig uom="" />
+         <lenFishneck uom="" />
+         <idFishneck uom="" />
+         <odFishneck uom="" />
+         <disp uom="" />
+         <presBurst uom="" />
+         <presCollapse uom="" />
+         <classService />
+         <wearWall uom="" />
+         <thickWall uom="" />
+         <configCon />
+         <bendStiffness uom="" />
+         <axialStiffness uom="" />
+         <torsionalStiffness uom="" />
+         <typeMaterial />
+         <doglegMx uom="" />
+         <vendor />
+         <model />
+         <nameTag uid="">
+            <name />
+            <numberingScheme />
+            <technology />
+            <location />
+            <installationDate />
+            <installationCompany />
+            <mountingCode />
+            <comment />
+         </nameTag>
+         <bitRecord>
+            <numBit />
+            <diaBit uom="" />
+            <diaPassThru uom="" />
+            <diaPilot uom="" />
+            <manufacturer />
+            <typeBit />
+            <cost currency="" />
+            <codeIADC />
+            <condInitInner />
+            <condInitOuter />
+            <condInitDull />
+            <condInitLocation />
+            <condInitBearing />
+            <condInitGauge />
+            <condInitOther />
+            <condInitReason />
+            <condFinalInner />
+            <condFinalOuter />
+            <condFinalDull />
+            <condFinalLocation />
+            <condFinalBearing />
+            <condFinalGauge />
+            <condFinalOther />
+            <condFinalReason />
+            <drive />
+            <bitClass />
+            <customData />
+         </bitRecord>
+         <areaNozzleFlow uom="" />
+         <nozzle uid="">
+            <index />
+            <diaNozzle uom="" />
+            <typeNozzle />
+            <len uom="" />
+            <orientation />
+            <customData />
+         </nozzle>
+         <connection uid="">
+            <id uom="" />
+            <od uom="" />
+            <len uom="" />
+            <typeThread />
+            <sizeThread uom="" />
+            <tensYield uom="" />
+            <tqYield uom="" />
+            <position />
+            <criticalCrossSection uom="" />
+            <presLeak uom="" />
+            <tqMakeup uom="" />
+            <customData />
+         </connection>
+         <jar>
+            <forUpSet uom="" />
+            <forDownSet uom="" />
+            <forUpTrip uom="" />
+            <forDownTrip uom="" />
+            <forPmpOpen uom="" />
+            <forSealFric uom="" />
+            <typeJar />
+            <jarAction />
+            <customData />
+         </jar>
+         <mwdTool>
+            <flowrateMn uom="" />
+            <flowrateMx uom="" />
+            <tempMx uom="" />
+            <idEquv uom="" />
+            <sensor uid="">
+               <typeMeasurement />
+               <offsetBot uom="" />
+               <comments />
+               <customData />
+            </sensor>
+            <customData />
+         </mwdTool>
+         <motor>
+            <offsetTool uom="" />
+            <presLossFact />
+            <flowrateMn uom="" />
+            <flowrateMx uom="" />
+            <diaRotorNozzle uom="" />
+            <clearanceBearBox uom="" />
+            <lobesRotor />
+            <lobesStator />
+            <typeBearing />
+            <tempOpMx uom="" />
+            <rotorCatcher />
+            <dumpValve />
+            <diaNozzle uom="" />
+            <rotatable />
+            <bendSettingsMn uom="" />
+            <bendSettingsMx uom="" />
+            <customData />
+         </motor>
+         <stabilizer uid="">
+            <lenBlade uom="" />
+            <lenBladeGauge uom="" />
+            <odBladeMx uom="" />
+            <odBladeMn uom="" />
+            <distBladeBot uom="" />
+            <shapeBlade />
+            <factFric />
+            <typeBlade />
+            <customData />
+         </stabilizer>
+         <bend uid="">
+            <angle uom="" />
+            <distBendBot uom="" />
+            <customData />
+         </bend>
+         <holeOpener>
+            <typeHoleOpener />
+            <numCutter />
+            <manufacturer />
+            <diaHoleOpener uom="" />
+            <customData />
+         </holeOpener>
+         <rotarySteerableTool>
+            <deflectionMethod />
+            <bendAngle uom="" />
+            <bendOffset uom="" />
+            <holeSizeMn uom="" />
+            <holeSizeMx uom="" />
+            <wobMx uom="" />
+            <operatingSpeed uom="" />
+            <speedMx uom="" />
+            <flowRateMn uom="" />
+            <flowRateMx uom="" />
+            <downLinkFlowRateMn uom="" />
+            <downLinkFlowRateMx uom="" />
+            <pressLossFact />
+            <padCount />
+            <padLen uom="" />
+            <padWidth uom="" />
+            <padOffset uom="" />
+            <openPadOd uom="" />
+            <closePadOd uom="" />
+            <sensor uid="">
+               <typeMeasurement />
+               <offsetBot uom="" />
+               <comments />
+               <customData />
+            </sensor>
+            <customData />
+         </rotarySteerableTool>
+         <customData />
+      </tubularComponent>
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <comments />
+      </commonData>
+      <customData />
+   </tubular>
+</tubulars>

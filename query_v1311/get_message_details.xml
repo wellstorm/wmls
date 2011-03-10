@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+   <message uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidMessage%">
+      <nameWell />
+      <nameWellbore />
+      <name />
+      <objectReference object="" uidRef="" />
+      <subObjectReference object="" uidRef="" />
+      <dTim />
+      <activityCode />
+      <detailActivity />
+      <md uom="" datum="" />
+      <mdBit uom="" datum="" />
+      <typeMessage />
+      <messageText />
+      <param index="" name="" uom="" description="" />
+      <severity />
+      <warnProbability />
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <comments />
+      </commonData>
+      <customData />
+   </message>
+</messages>

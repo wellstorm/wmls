@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<logs xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+   <log uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidLog%">
+      <dataRowCount />
+      <startDateTimeIndex>%startDateTimeIndex%</startDateTimeIndex>
+      <endDateTimeIndex>%endDateTimeIndex%</endDateTimeIndex>
+      <logCurveInfo>
+         <mnemonic />
+         <minDateTimeIndex />
+         <maxDateTimeIndex />
+         <columnIndex />
+      </logCurveInfo>
+      <logData>
+         <data />
+      </logData>
+   </log>
+</logs>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changeLogs xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <changeLog uidWell="%uidWell%" uidWellbore="%uidWellbore%" uidParentObject="%uidParentObject%" uidObject="%uidObject%" uid="%uidChangeLog%" />
+</changeLogs>

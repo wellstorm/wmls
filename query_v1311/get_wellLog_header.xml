@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wellLogs xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+   <wellLog uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidWellLog%">
+      <nameWell />
+      <nameWellbore />
+      <name />
+      <objectGrowing />
+      <serviceCompany />
+      <runNumber />
+      <bhaRunNumber />
+      <creationDate />
+      <description />
+      <indexType />
+      <minIndex uom="" />
+      <maxIndex uom="" />
+      <minDateTimeIndex />
+      <maxDateTimeIndex />
+      <nullValue />
+      <logParam index="" name="" uom="" description="" />
+      <logCurveInfo uid="">
+         <mnemonic />
+         <classWitsml />
+         <unit />
+         <mnemAlias />
+         <nullValue />
+         <alternateIndex />
+         <wellDatum uidRef="" />
+         <curveDescription />
+         <sensorOffset uom="" />
+         <dataSource />
+         <densData uom="" />
+         <traceState />
+         <traceOrigin />
+         <typeLogData />
+         <encodingDef />
+         <axisDefinition uid="">
+            <order />
+            <count />
+            <name />
+            <propertyType />
+            <uom />
+            <doubleValues />
+            <stringValues />
+         </axisDefinition>
+      </logCurveInfo>
+      <blockInfo uid="">
+         <dataRowCount />
+         <pass />
+         <description />
+         <indexType />
+         <startIndex uom="" />
+         <endIndex uom="" />
+         <stepIncrement uom="" numerator="" denominator="" />
+         <startDateTimeIndex />
+         <endDateTimeIndex />
+         <direction />
+         <indexCurve columnIndex="" />
+         <nullValue />
+         <logParam index="" name="" uom="" description="" />
+         <blockCurveInfo uid="">
+            <curveId />
+            <columnIndex />
+            <minIndex uom="" />
+            <maxIndex uom="" />
+            <minDateTimeIndex />
+            <maxDateTimeIndex />
+         </blockCurveInfo>
+      </blockInfo>
+      <!-- No logData. -->
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <comments />
+      </commonData>
+      <customData />
+   </wellLog>
+</wellLogs>

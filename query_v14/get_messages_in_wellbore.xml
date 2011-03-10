@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <message uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+      <nameWell />
+      <nameWellbore />
+      <name />
+   </message>
+</messages>

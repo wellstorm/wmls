@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wellLogs xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <wellLog uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidWellLog%">
+      <nameWell />
+      <nameWellbore />
+      <name />
+      <objectGrowing />
+      <dataGroup />
+      <serviceCompany />
+      <runNumber />
+      <bhaRunNumber />
+      <creationDate />
+      <description />
+      <dataDelimiter />
+      <indexType />
+      <minIndex uom="" />
+      <maxIndex uom="" />
+      <minDateTimeIndex />
+      <maxDateTimeIndex />
+      <nullValue />
+      <logParam index="" name="" uom="" description="" />
+      <logCurveInfo uid="">
+         <mnemonic />
+         <classWitsml />
+         <classIndex />
+         <unit />
+         <mnemAlias />
+         <nullValue />
+         <alternateIndex />
+         <wellDatum uidRef="" />
+         <curveDescription />
+         <sensorOffset uom="" />
+         <dataSource />
+         <densData uom="" />
+         <traceState />
+         <traceOrigin />
+         <typeLogData />
+         <encodingDef />
+         <axisDefinition uid="">
+            <order />
+            <count />
+            <name />
+            <propertyType />
+            <uom />
+            <doubleValues />
+            <stringValues />
+            <extensionNameValue uid="">
+               <name />
+               <value uom="" />
+               <dataType />
+               <dTim />
+               <md uom="" datum="" />
+               <index />
+               <measureClass />
+               <description />
+            </extensionNameValue>
+         </axisDefinition>
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </logCurveInfo>
+      <blockInfo uid="">
+         <curveSensorsAligned />
+         <dataRowCount />
+         <pass />
+         <description />
+         <indexType />
+         <startIndex uom="" />
+         <endIndex uom="" />
+         <stepIncrement uom="" numerator="" denominator="" />
+         <startDateTimeIndex />
+         <endDateTimeIndex />
+         <direction />
+         <indexCurve columnIndex="" />
+         <nullValue />
+         <logParam index="" name="" uom="" description="" />
+         <blockCurveInfo uid="">
+            <curveId />
+            <columnIndex />
+            <minIndex uom="" />
+            <maxIndex uom="" />
+            <minDateTimeIndex />
+            <maxDateTimeIndex />
+            <extensionNameValue uid="">
+               <name />
+               <value uom="" />
+               <dataType />
+               <dTim />
+               <md uom="" datum="" />
+               <index />
+               <measureClass />
+               <description />
+            </extensionNameValue>
+         </blockCurveInfo>
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </blockInfo>
+      <logData>
+         <data id="" />
+      </logData>
+      <depthRegistrationData>
+         <fileName nameType="" />
+         <mimetype />
+         <fileSize />
+         <checksum type="" />
+         <imagePixelWidth />
+         <imagePixelHeight />
+         <imageMargins uid="">
+            <ul>
+               <x />
+               <y />
+            </ul>
+            <ur>
+               <x />
+               <y />
+            </ur>
+            <ll>
+               <x />
+               <y />
+            </ll>
+            <lr>
+               <x />
+               <y />
+            </lr>
+            <extensionNameValue uid="">
+               <name />
+               <value uom="" />
+               <dataType />
+               <dTim />
+               <md uom="" datum="" />
+               <index />
+               <measureClass />
+               <description />
+            </extensionNameValue>
+         </imageMargins>
+         <headerSection uid="">
+            <type />
+            <name />
+            <position uid="">
+               <ul>
+                  <x />
+                  <y />
+               </ul>
+               <ur>
+                  <x />
+                  <y />
+               </ur>
+               <ll>
+                  <x />
+                  <y />
+               </ll>
+               <lr>
+                  <x />
+                  <y />
+               </lr>
+               <extensionNameValue uid="">
+                  <name />
+                  <value uom="" />
+                  <dataType />
+                  <dTim />
+                  <md uom="" datum="" />
+                  <index />
+                  <measureClass />
+                  <description />
+               </extensionNameValue>
+            </position>
+            <extensionNameValue uid="">
+               <name />
+               <value uom="" />
+               <dataType />
+               <dTim />
+               <md uom="" datum="" />
+               <index />
+               <measureClass />
+               <description />
+            </extensionNameValue>
+         </headerSection>
+         <alternateSection uid="">
+            <type />
+            <name />
+            <position uid="">
+               <ul>
+                  <x />
+                  <y />
+               </ul>
+               <ur>
+                  <x />
+                  <y />
+               </ur>
+               <ll>
+                  <x />
+                  <y />
+               </ll>
+               <lr>
+                  <x />
+                  <y />
+               </lr>
+               <extensionNameValue uid="">
+                  <name />
+                  <value uom="" />
+                  <dataType />
+                  <dTim />
+                  <md uom="" datum="" />
+                  <index />
+                  <measureClass />
+                  <description />
+               </extensionNameValue>
+            </position>
+            <extensionNameValue uid="">
+               <name />
+               <value uom="" />
+               <dataType />
+               <dTim />
+               <md uom="" datum="" />
+               <index />
+               <measureClass />
+               <description />
+            </extensionNameValue>
+         </alternateSection>
+         <logSection uid="">
+            <logSectionSequenceNumber />
+            <logSectionType />
+            <logSectionName />
+            <curveInfo uidRef="" />
+            <track uid="">
+               <name />
+               <type />
+               <leftEdge uom="" />
+               <rightEdge uom="" />
+               <extensionNameValue uid="">
+                  <name />
+                  <value uom="" />
+                  <dataType />
+                  <dTim />
+                  <md uom="" datum="" />
+                  <index />
+                  <measureClass />
+                  <description />
+               </extensionNameValue>
+            </track>
+            <logMatrix />
+            <scaleNumerator uom="" />
+            <scaleDenominator uom="" />
+            <indexType />
+            <indexUom />
+            <indexReference />
+            <minInterval uom="" />
+            <maxInterval uom="" />
+            <upperCurveScaleRect uid="">
+               <ul>
+                  <x />
+                  <y />
+               </ul>
+               <ur>
+                  <x />
+                  <y />
+               </ur>
+               <ll>
+                  <x />
+                  <y />
+               </ll>
+               <lr>
+                  <x />
+                  <y />
+               </lr>
+               <extensionNameValue uid="">
+                  <name />
+                  <value uom="" />
+                  <dataType />
+                  <dTim />
+                  <md uom="" datum="" />
+                  <index />
+                  <measureClass />
+                  <description />
+               </extensionNameValue>
+            </upperCurveScaleRect>
+            <lowerCurveScaleRect uid="">
+               <ul>
+                  <x />
+                  <y />
+               </ul>
+               <ur>
+                  <x />
+                  <y />
+               </ur>
+               <ll>
+                  <x />
+                  <y />
+               </ll>
+               <lr>
+                  <x />
+                  <y />
+               </lr>
+               <extensionNameValue uid="">
+                  <name />
+                  <value uom="" />
+                  <dataType />
+                  <dTim />
+                  <md uom="" datum="" />
+                  <index />
+                  <measureClass />
+                  <description />
+               </extensionNameValue>
+            </lowerCurveScaleRect>
+            <whitespace uid="">
+               <ul>
+                  <x />
+                  <y />
+               </ul>
+               <ur>
+                  <x />
+                  <y />
+               </ur>
+               <ll>
+                  <x />
+                  <y />
+               </ll>
+               <lr>
+                  <x />
+                  <y />
+               </lr>
+               <extensionNameValue uid="">
+                  <name />
+                  <value uom="" />
+                  <dataType />
+                  <dTim />
+                  <md uom="" datum="" />
+                  <index />
+                  <measureClass />
+                  <description />
+               </extensionNameValue>
+            </whitespace>
+            <calibrationPoint uid="">
+               <index uom="" />
+               <point>
+                  <x />
+                  <y />
+               </point>
+               <track uidRef="" />
+               <role />
+               <fraction />
+               <parameter uid="">
+                  <mnemonic />
+                  <dictionary />
+                  <topIndex uom="" />
+                  <bottomIndex uom="" />
+                  <value uom="" />
+                  <description />
+                  <extensionNameValue uid="">
+                     <name />
+                     <value uom="" />
+                     <dataType />
+                     <dTim />
+                     <md uom="" datum="" />
+                     <index />
+                     <measureClass />
+                     <description />
+                  </extensionNameValue>
+               </parameter>
+               <comment />
+               <extensionNameValue uid="">
+                  <name />
+                  <value uom="" />
+                  <dataType />
+                  <dTim />
+                  <md uom="" datum="" />
+                  <index />
+                  <measureClass />
+                  <description />
+               </extensionNameValue>
+            </calibrationPoint>
+            <parameter uid="">
+               <mnemonic />
+               <dictionary />
+               <topIndex uom="" />
+               <bottomIndex uom="" />
+               <value uom="" />
+               <description />
+               <extensionNameValue uid="">
+                  <name />
+                  <value uom="" />
+                  <dataType />
+                  <dTim />
+                  <md uom="" datum="" />
+                  <index />
+                  <measureClass />
+                  <description />
+               </extensionNameValue>
+            </parameter>
+            <comment />
+            <extensionNameValue uid="">
+               <name />
+               <value uom="" />
+               <dataType />
+               <dTim />
+               <md uom="" datum="" />
+               <index />
+               <measureClass />
+               <description />
+            </extensionNameValue>
+         </logSection>
+      </depthRegistrationData>
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <serviceCategory />
+         <comments />
+         <acquisitionTimeZone dTim="" />
+         <extensionAny />
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </commonData>
+      <customData />
+   </wellLog>
+</wellLogs>

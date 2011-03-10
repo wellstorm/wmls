@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cementJobs xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <cementJob uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidCementJob%" />
+</cementJobs>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wbGeometrys xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <wbGeometry uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidWbGeometry%" />
+</wbGeometrys>

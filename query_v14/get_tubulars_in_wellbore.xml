@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tubulars xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <tubular uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="">
+      <nameWell />
+      <nameWellbore />
+      <name />
+   </tubular>
+</tubulars>

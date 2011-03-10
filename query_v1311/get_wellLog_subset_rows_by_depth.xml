@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wellLogs xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+   <wellLog uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidWellLog%">
+      <minIndex uom="">%minIndex%</minIndex>
+      <maxIndex uom="">%maxIndex%</maxIndex>
+      <blockInfo uid="">
+         <dataRowCount />
+         <startIndex uom="" />
+         <endIndex uom="" />
+         <blockCurveInfo uid="">
+            <curveId />
+            <columnIndex />
+            <minIndex uom="" />
+            <maxIndex uom="" />
+         </blockCurveInfo>
+      </blockInfo>
+      <logData>
+         <data id="" />
+      </logData>
+   </wellLog>
+</wellLogs>

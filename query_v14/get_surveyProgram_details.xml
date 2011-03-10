@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<surveyPrograms xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+   <surveyProgram uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidSurveyProgram%">
+      <nameWell />
+      <nameWellbore />
+      <name />
+      <surveyVer />
+      <dTimTrajProg />
+      <engineer />
+      <final />
+      <surveySection uid="">
+         <sequence />
+         <name />
+         <mdStart uom="" datum="" />
+         <mdEnd uom="" datum="" />
+         <nameSurveyCompany />
+         <nameTool />
+         <typeTool />
+         <modelError />
+         <overwrite />
+         <frequencyMx uom="" />
+         <itemState />
+         <comments />
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </surveySection>
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <serviceCategory />
+         <comments />
+         <acquisitionTimeZone dTim="" />
+         <extensionAny />
+         <extensionNameValue uid="">
+            <name />
+            <value uom="" />
+            <dataType />
+            <dTim />
+            <md uom="" datum="" />
+            <index />
+            <measureClass />
+            <description />
+         </extensionNameValue>
+      </commonData>
+      <customData />
+   </surveyProgram>
+</surveyPrograms>

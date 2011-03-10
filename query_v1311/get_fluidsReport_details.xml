@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fluidsReports xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+   <fluidsReport uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidFluidsReport%">
+      <nameWell />
+      <nameWellbore />
+      <name />
+      <dTim />
+      <md uom="" datum="" />
+      <tvd uom="" datum="" />
+      <numReport />
+      <fluid uid="">
+         <type />
+         <locationSample />
+         <dTim />
+         <md uom="" datum="" />
+         <density uom="" />
+         <visFunnel uom="" />
+         <tempVis uom="" />
+         <pv uom="" />
+         <yp uom="" />
+         <gel10Sec uom="" />
+         <gel10Min uom="" />
+         <gel30Min uom="" />
+         <filterCakeLtlp uom="" />
+         <filtrateLtlp uom="" />
+         <tempHthp uom="" />
+         <presHthp uom="" />
+         <filtrateHthp uom="" />
+         <filterCakeHthp uom="" />
+         <solidsPc uom="" />
+         <waterPc uom="" />
+         <oilPc uom="" />
+         <sandPc uom="" />
+         <solidsLowGravPc uom="" />
+         <solidsCalcPc uom="" />
+         <baritePc uom="" />
+         <lcm uom="" />
+         <mbt uom="" />
+         <ph />
+         <tempPh uom="" />
+         <pm uom="" />
+         <pmFiltrate uom="" />
+         <mf uom="" />
+         <alkalinityP1 uom="" />
+         <alkalinityP2 uom="" />
+         <chloride uom="" />
+         <calcium uom="" />
+         <magnesium uom="" />
+         <potassium uom="" />
+         <rheometer uid="">
+            <tempRheom uom="" />
+            <presRheom uom="" />
+            <vis3Rpm />
+            <vis6Rpm />
+            <vis100Rpm />
+            <vis200Rpm />
+            <vis300Rpm />
+            <vis600Rpm />
+         </rheometer>
+         <brinePc uom="" />
+         <lime uom="" />
+         <electStab uom="" />
+         <calciumChloride uom="" />
+         <company />
+         <engineer />
+         <asg />
+         <solidsHiGravPc uom="" />
+         <polymer uom="" />
+         <polyType />
+         <solCorPc uom="" />
+         <oilCtg uom="" />
+         <hardnessCa uom="" />
+         <sulfide uom="" />
+         <comments />
+      </fluid>
+      <commonData>
+         <sourceName />
+         <dTimCreation />
+         <dTimLastChange />
+         <itemState />
+         <comments />
+      </commonData>
+      <customData />
+   </fluidsReport>
+</fluidsReports>

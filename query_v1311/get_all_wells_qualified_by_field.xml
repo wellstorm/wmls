@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wells xmlns="http://www.witsml.org/schemas/131" version="1.3.1.1">
+   <well uid="">
+      <name />
+      <field>%field%</field>
+   </well>
+</wells>
