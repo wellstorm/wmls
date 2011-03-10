@@ -14,8 +14,11 @@
 
 
 require 'optparse'
+require 'net/http'
+require 'net/https'
+require 'uri'
+require 'stringio'
 require 'rexml/document'
-require 'post'
 
 options = {}
 OptionParser.new do |opts|
@@ -61,6 +64,33 @@ def extract_type(xml_data)
   plural = doc.root.name
   return plural[0..plural.length-2]
 end
+
+def post(io, url, user, pass, soap_action)    
+  url = URI.parse(url)
+  io = StringIO.new(io)
+
+  req = Net::HTTP::Post.new(url.path)
+  req.basic_auth user, pass
+  req.body_stream = io
+  req.add_field('SOAPAction', soap_action)
+  req.content_type = 'application/soap+xml'
+  #req.content_length = io.stat.size
+  req.content_length = io.size   # specific to StringIO class ? why no stat on that class?
+  http = Net::HTTP.new(url.host, url.port)  
+  http.use_ssl = true
+  http.read_timeout = 60 # secs
+
+  res = http.start {|http2| http2.request(req) }
+
+  case res
+  when Net::HTTPSuccess, Net::HTTPRedirection
+    # OK
+    res
+  else
+    res.error!
+  end
+end
+
 
 xmlIn = get_file_as_string(options[:query])
 wmlTypeIn = extract_type(xmlIn)
