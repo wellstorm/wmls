@@ -111,7 +111,7 @@ def post(io, url, user, pass, soap_action)
   http = Net::HTTP.new(url.host, url.port)  
   http.use_ssl = true
   http.read_timeout = 60 # secs
-
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   res = http.start {|http2| http2.request(req) }
 
   case res
