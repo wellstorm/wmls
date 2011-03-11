@@ -3,7 +3,7 @@ wmls.rb -- WITSML command line tool in Ruby.
 Use this script to call GetFromStore, AddToStore, UpdateInStore, or DeleteFromStore on 
 a WITSML server.
 
-Usage: .rb [options]
+Usage: wmls.rb [options]
     -v, --verbose                    Run verbosely
     -r, --url url                    URL of the WITSML service
     -u, --username USER              HTTP user name
