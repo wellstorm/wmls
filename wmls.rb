@@ -23,28 +23,28 @@ require 'rexml/document'
 
 options = {}
 
-opts =OptionParser.new do |opts|
-  opts.banner = "Usage: wmls.rb [options]"
-#  opts.on("-v", "--verbose", "Run verbosely") do |v|
+opts =OptionParser.new do |o|
+  o.banner = "Usage: wmls.rb [options]"
+#  o.on("-v", "--verbose", "Run verbosely") do |v|
 #    options[:verbose] = v
 #  end
-  opts.on("-r", "--url url", "URL of the WITSML service") do |v|
+  o.on("-r", "--url url", "URL of the WITSML service") do |v|
     options[:url] = v
   end
-  opts.on("-u", "--username USER", "HTTP user name (optional)") do |v|
+  o.on("-u", "--username USER", "HTTP user name (optional)") do |v|
     options[:user_name] = v
   end
-  opts.on("-p", "--password PASS", "HTTP password (optional)") do |v|
+  o.on("-p", "--password PASS", "HTTP password (optional)") do |v|
     options[:password] = v
   end
-  opts.on("-q", "--query QUERYFILE", "Path to file containing query, delete, add or update template. (optional, default stdin)") do |v|
+  o.on("-q", "--query QUERYFILE", "Path to file containing query, delete, add or update template. (optional, default stdin)") do |v|
     options[:query] = v
   end
-  opts.on("-a", "--action ACTION", [:add,:get,:update,:delete], "WITSML action: add, get, update, or delete (optional, default 'get')") do |v|
+  o.on("-a", "--action ACTION", [:add,:get,:update,:delete], "WITSML action: add, get, update, or delete (optional, default 'get')") do |v|
     options[:action] = v || :get
   end
-  opts.on_tail("-h", "--help", "Show this message") do
-    puts opts
+  o.on_tail("-h", "--help", "Show this message") do
+    puts o
     exit
   end
 end
@@ -111,7 +111,7 @@ def post(io, url, user, pass, soap_action)
   http = Net::HTTP.new(url.host, url.port)  
   http.use_ssl = true
   http.read_timeout = 60 # secs
-
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   res = http.start {|http2| http2.request(req) }
 
   case res
