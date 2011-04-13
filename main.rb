@@ -70,15 +70,17 @@ end
 
 template= get_file_as_string(options[:query] )
 
+wmls = Wmls.new options[:url], options[:user_name], options[:password]
+
 case options[:action]
   when :add
-  result = Wmls::add_to_store(template)
+  result = wmls.add_to_store(template)
   when :delete
-  result = Wmls::delete_from_store(template)
+  result = wmls.delete_from_store(template)
   when :update
-  result = Wmls::update_in_store(template)
-  when :get,Nil
-  result = Wmls::get_from_store(template)
+  result = wmls.update_in_store(template)
+  when :get,nil
+  result = wmls.get_from_store(template)
   else
   raise "unsupported action #{options[:action]}"
 end

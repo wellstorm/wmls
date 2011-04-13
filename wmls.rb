@@ -42,7 +42,7 @@ END
 </SOAP-ENV:Envelope>
 END
 
-    end
+  end
 
 
   # Replace special xml chartacters '&' and '<'
