@@ -20,7 +20,30 @@ require 'uri'
 require 'stringio'
 require 'rexml/document'
 
-module Wmls
+class Wmls
+  def initialize (url, user_name, password)
+    @url = url
+    @user_name = user_name
+    @password = password
+
+    @optionsIn = ''
+    @capabilitiesIn = ''
+
+
+    @envelope_begin = <<END
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:ns0="http://www.witsml.org/message/120">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+END
+
+    @envelope_end = <<END
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+END
+
+    end
+
 
   # Replace special xml chartacters '&' and '<'
   def escape_xml(xml_in) 
@@ -80,30 +103,14 @@ module Wmls
     end
   end
 
-  optionsIn = ''
-  capabilitiesIn = ''
 
-
-  envelope_begin = <<END
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:ns0="http://www.witsml.org/message/120">
-    <SOAP-ENV:Header/>
-    <SOAP-ENV:Body>
-END
-
-  envelope_end = <<END
-    </SOAP-ENV:Body>
-</SOAP-ENV:Envelope>
-END
-
-
-  def send(url, user_name, password, envelope_middle)
-    envelope = envelope_begin + envelope_middle + envelope_end;
-    response = post(envelope, options[:url],  options[:user_name], options[:password], soap_action)
+  def send(envelope_middle, soap_action)
+    envelope = @envelope_begin + envelope_middle + @envelope_end
+    response = post(envelope, @url, @user_name, @password, soap_action)
     status, supp_msg, witsml = extract_response(response.body)
   end
 
-  def add_to_store(url, user_name, password, template)
+  def add_to_store(template)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_AddToStore'
@@ -111,14 +118,14 @@ END
         <ns0:WMLS_AddToStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <XMLin>#{queryIn}</XMLin>
-            <OptionsIn>#{optionsIn}</OptionsIn>
-            <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
+            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_AddToStore>
 END
-    return send url, user_name, password, envelope_middle
+    return send envelope_middle, soap_action
   end
 
-  def delete_from_store(url, user_name, password, template)
+  def delete_from_store(template)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_DeleteFromStore'
@@ -126,13 +133,13 @@ END
         <ns0:WMLS_DeleteFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <QueryIn>#{queryIn}</QueryIn>
-            <OptionsIn>#{optionsIn}</OptionsIn>
-            <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
+            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_DeleteFromStore>
 END
-    return send url, user_name, password, envelope_middle
+    return send envelope_middle, soap_action
   end
-  def update_in_store(url, user_name, password, template)
+  def update_in_store(template)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_UpdateInStore'
@@ -140,14 +147,14 @@ END
         <ns0:WMLS_UpdateInStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <XMLin>#{queryIn}</XMLin>
-            <OptionsIn>#{optionsIn}</OptionsIn>
-            <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
+            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_UpdateInStore>
 END
-    return send url, user_name, password, envelope_middle
+    return send envelope_middle, soap_action
   end
   
-  def get_from_store(url, user_name, password, template)
+  def get_from_store(template)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetFromStore'
@@ -155,11 +162,11 @@ END
         <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <QueryIn>#{queryIn}</QueryIn>
-            <OptionsIn>#{optionsIn}</OptionsIn>
-            <CapabilitiesIn>#{capabilitiesIn}</CapabilitiesIn>
+            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_GetFromStore>
 END
-    return send url, user_name, password, envelope_middle
+    return send envelope_middle, soap_action
   end
 
 
