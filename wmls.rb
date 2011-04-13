@@ -21,6 +21,9 @@ require 'stringio'
 require 'rexml/document'
 
 class Wmls
+
+  attr_accessor :timeout
+
   def initialize (url, user_name, password)
     @url = url
     @user_name = user_name
@@ -28,7 +31,7 @@ class Wmls
 
     @optionsIn = ''
     @capabilitiesIn = ''
-
+    @timeout = 60
 
     @envelope_begin = <<END
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
@@ -41,8 +44,8 @@ END
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 END
-
   end
+
 
 
   # Replace special xml chartacters '&' and '<'
@@ -90,7 +93,7 @@ END
     req.content_length = io.size   # specific to StringIO class ? why no stat on that class?
     http = Net::HTTP.new(url.host, url.port)  
     http.use_ssl = true
-    http.read_timeout = 60 # secs
+    http.read_timeout = @timeout # secs
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     res = http.start {|http2| http2.request(req) }
 
