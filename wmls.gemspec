@@ -7,6 +7,6 @@ Gem::Specification.new do |s|
   s.summary = %q{Calls GetFromStore, AddToStore, UpdateInStore, or DeleteFromStore on a WITSML server.}
   s.homepage = %q{https://github.com/wellstorm/wmls.rb/}
   s.description = %q{Wmls calls GetFromStore, AddToStore, UpdateInStore, or DeleteFromStore on a WITSML server.}
-  s.files = [ "README", "LICENSE", "main.rb", "lib/wmls.rb"]
+  s.files = [ "README", "LICENSE", "lib/wmls.rb"]
   s.executables = [ "wmls" ]
 end
