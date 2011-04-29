@@ -19,7 +19,7 @@ require 'wmls'
 options = {}
 
 opts =OptionParser.new do |o|
-  o.banner = "Usage: wmls.rb [options]"
+  o.banner = "Usage: wmls [options]"
 #  o.on("-v", "--verbose", "Run verbosely") do |v|
 #    options[:verbose] = v
 #  end

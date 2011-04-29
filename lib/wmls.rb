@@ -20,9 +20,24 @@ require 'uri'
 require 'stringio'
 require 'rexml/document'
 
+# A WITSML client library. 
+#
+# Author:: Hugh Winkler
+# Copyright:: 2011 Wellstorm Development
+# License:: Apache 2.0
+
+# A WITSML client library. Construct an instance with the URL of the WITSML service,
+# and credentials. Then call the WMLS methods, passing a WITSML query 
+# template to each method.
+
 class Wmls
 
+  # The HTTP timeout in seconds (default 60)
   attr_accessor :timeout
+
+  # Construct a new Wmls instance. 
+  # url The URL of the remote WMLS service
+  # user_name, password Credentials for the remote service
 
   def initialize (url, user_name, password)
     @url = url
@@ -46,7 +61,71 @@ END
 END
   end
 
+  # call WMLS_AddToStore with the given template
+  def add_to_store(template)
+    wmlTypeIn = extract_type(template)
+    queryIn = escape_xml(template)
+    soap_action = 'http://www.witsml.org/action/120/Store.WMLS_AddToStore'
+    envelope_middle = <<END
+        <ns0:WMLS_AddToStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
+            <XMLin>#{queryIn}</XMLin>
+            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
+        </ns0:WMLS_AddToStore>
+END
+    return send envelope_middle, soap_action
+  end
 
+  # call WMLS_DeleteStore with the given template
+  def delete_from_store(template)
+    wmlTypeIn = extract_type(template)
+    queryIn = escape_xml(template)
+    soap_action = 'http://www.witsml.org/action/120/Store.WMLS_DeleteFromStore'
+    envelope_middle = <<END
+        <ns0:WMLS_DeleteFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
+            <QueryIn>#{queryIn}</QueryIn>
+            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
+        </ns0:WMLS_DeleteFromStore>
+END
+    return send envelope_middle, soap_action
+  end
+
+  # call WMLS_UpdateInStore with the given template
+  def update_in_store(template)
+    wmlTypeIn = extract_type(template)
+    queryIn = escape_xml(template)
+    soap_action = 'http://www.witsml.org/action/120/Store.WMLS_UpdateInStore'
+    envelope_middle = <<END
+        <ns0:WMLS_UpdateInStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
+            <XMLin>#{queryIn}</XMLin>
+            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
+        </ns0:WMLS_UpdateInStore>
+END
+    return send envelope_middle, soap_action
+  end
+  
+  # call WMLS_GetFromStore with the given template
+  def get_from_store(template)
+    wmlTypeIn = extract_type(template)
+    queryIn = escape_xml(template)
+    soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetFromStore'
+    envelope_middle = <<END
+        <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
+            <QueryIn>#{queryIn}</QueryIn>
+            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
+        </ns0:WMLS_GetFromStore>
+END
+    return send envelope_middle, soap_action
+  end
+
+  private
 
   # Replace special xml chartacters '&' and '<'
   def escape_xml(xml_in) 
@@ -111,65 +190,6 @@ END
     envelope = @envelope_begin + envelope_middle + @envelope_end
     response = post(envelope, @url, @user_name, @password, soap_action)
     status, supp_msg, witsml = extract_response(response.body)
-  end
-
-  def add_to_store(template)
-    wmlTypeIn = extract_type(template)
-    queryIn = escape_xml(template)
-    soap_action = 'http://www.witsml.org/action/120/Store.WMLS_AddToStore'
-    envelope_middle = <<END
-        <ns0:WMLS_AddToStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
-            <XMLin>#{queryIn}</XMLin>
-            <OptionsIn>#{@optionsIn}</OptionsIn>
-            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
-        </ns0:WMLS_AddToStore>
-END
-    return send envelope_middle, soap_action
-  end
-
-  def delete_from_store(template)
-    wmlTypeIn = extract_type(template)
-    queryIn = escape_xml(template)
-    soap_action = 'http://www.witsml.org/action/120/Store.WMLS_DeleteFromStore'
-    envelope_middle = <<END
-        <ns0:WMLS_DeleteFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
-            <QueryIn>#{queryIn}</QueryIn>
-            <OptionsIn>#{@optionsIn}</OptionsIn>
-            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
-        </ns0:WMLS_DeleteFromStore>
-END
-    return send envelope_middle, soap_action
-  end
-  def update_in_store(template)
-    wmlTypeIn = extract_type(template)
-    queryIn = escape_xml(template)
-    soap_action = 'http://www.witsml.org/action/120/Store.WMLS_UpdateInStore'
-    envelope_middle = <<END
-        <ns0:WMLS_UpdateInStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
-            <XMLin>#{queryIn}</XMLin>
-            <OptionsIn>#{@optionsIn}</OptionsIn>
-            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
-        </ns0:WMLS_UpdateInStore>
-END
-    return send envelope_middle, soap_action
-  end
-  
-  def get_from_store(template)
-    wmlTypeIn = extract_type(template)
-    queryIn = escape_xml(template)
-    soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetFromStore'
-    envelope_middle = <<END
-        <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-            <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
-            <QueryIn>#{queryIn}</QueryIn>
-            <OptionsIn>#{@optionsIn}</OptionsIn>
-            <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
-        </ns0:WMLS_GetFromStore>
-END
-    return send envelope_middle, soap_action
   end
 
 
