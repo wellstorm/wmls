@@ -20,9 +20,24 @@ require 'uri'
 require 'stringio'
 require 'rexml/document'
 
+# A WITSML client library. 
+#
+# Author:: Hugh Winkler
+# Copyright:: 2011 Wellstorm Development
+# License:: Apache 2.0
+
+# A WITSML client library. Construct an instance with the URL of the WITSML service,
+# and credentials. Then call the WMLS methods, passing a WITSML query 
+# template to each method.
+
 class Wmls
 
+  # The HTTP timeout in seconds (default 60)
   attr_accessor :timeout
+
+  # Construct a new Wmls instance. 
+  # url The URL of the remote WMLS service
+  # user_name, password Credentials for the remote service
 
   def initialize (url, user_name, password)
     @url = url
@@ -46,7 +61,7 @@ END
 END
   end
 
-
+  # call WMLS_AddToStore with the given template
   def add_to_store(template)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
@@ -62,6 +77,7 @@ END
     return send envelope_middle, soap_action
   end
 
+  # call WMLS_DeleteStore with the given template
   def delete_from_store(template)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
@@ -76,6 +92,8 @@ END
 END
     return send envelope_middle, soap_action
   end
+
+  # call WMLS_UpdateInStore with the given template
   def update_in_store(template)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
@@ -91,6 +109,7 @@ END
     return send envelope_middle, soap_action
   end
   
+  # call WMLS_GetFromStore with the given template
   def get_from_store(template)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
