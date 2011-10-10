@@ -171,7 +171,7 @@ END
     #req.content_length = io.stat.size
     req.content_length = io.size   # specific to StringIO class ? why no stat on that class?
     http = Net::HTTP.new(url.host, url.port)  
-    http.use_ssl = true
+    http.use_ssl = (url.scheme == "https")
     http.read_timeout = @timeout # secs
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     res = http.start {|http2| http2.request(req) }
