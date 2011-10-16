@@ -166,12 +166,18 @@ END
     req = Net::HTTP::Post.new(url.path)
     req.basic_auth user, pass if user && user.length > 0
     req.body_stream = io
+
+    #soap 1.1:
     req.add_field('SOAPAction', soap_action)
-    req.content_type = 'application/soap+xml'
+    req.content_type = 'text/xml' 
+
+    #soap 1.2 would replace the above with:
+    #req.content_type = "application/soap+xml; action=#{soap_action}"
+
     #req.content_length = io.stat.size
     req.content_length = io.size   # specific to StringIO class ? why no stat on that class?
     http = Net::HTTP.new(url.host, url.port)  
-    http.use_ssl = true
+    http.use_ssl = (url.scheme == "https")
     http.read_timeout = @timeout # secs
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     res = http.start {|http2| http2.request(req) }

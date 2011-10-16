@@ -1,9 +1,13 @@
-wmls.rb -- WITSML command line tool in Ruby.
+wmls -- WITSML command line tool in Ruby.
+
+wmls is a script in the bin folder. It uses lib/wmls.rb, a library you can use to 
+write your own WiTSML programs. 
 
 Use this script to call GetFromStore, AddToStore, UpdateInStore, or DeleteFromStore on 
 a WITSML server.
 
-Usage: wmls.rb [options]
+Usage: wmls [options]
+    -Dvariable=value                 Replace occurrences of %variable% with value, in the query template
     -v, --verbose                    Run verbosely
     -r, --url url                    URL of the WITSML service
     -u, --username USER              HTTP user name
@@ -14,7 +18,7 @@ Usage: wmls.rb [options]
     -h, --help                       Show this message
 
 Example:
-ruby wmls.rb -q query_v1311/get_all_wells.xml -r https://witsml.wellstorm.com/witsml/services/store -u username -p mypassword -a get
+wmls -q query_v1311/get_all_wells.xml -r https://witsml.wellstorm.com/witsml/services/store -u username -p mypassword -a get
 
 I've included a bunch of sample query templates originally created by Gary Masters of Energistics. 
 
@@ -22,4 +26,5 @@ License: Apache 2.0
 
 History:
 
-10 Mar 2011 -- initial commit. 
+10 Mar 2011 -- initial commit.
+16 Oct 2011 -- added -D option to wmls command line tool  (0.1.7)
