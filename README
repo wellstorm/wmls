@@ -4,6 +4,7 @@ Use this script to call GetFromStore, AddToStore, UpdateInStore, or DeleteFromSt
 a WITSML server.
 
 Usage: wmls.rb [options]
+	-Dvariable=value                 Replace occurrences of %variable% with value, in the query template
     -v, --verbose                    Run verbosely
     -r, --url url                    URL of the WITSML service
     -u, --username USER              HTTP user name
