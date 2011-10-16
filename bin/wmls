@@ -16,13 +16,18 @@
 require 'rubygems'
 require 'optparse'
 require 'wmls'
-options = {}
+options = {:defs => {}}
 
 opts =OptionParser.new do |o|
   o.banner = "Usage: wmls [options]"
 #  o.on("-v", "--verbose", "Run verbosely") do |v|
 #    options[:verbose] = v
 #  end
+  o.on("-DVARIABLE=VALUE", "Define a substitution variable. Use this multiple times to replace %variable% with value in the template.") do |v|
+    m = /([a-zA-Z0-9_]*)=(.*)/.match(v.to_s)
+    #puts " -D #{m[1]} = #{m[2]}"
+    options[:defs][m[1]] = m[2]
+  end
   o.on("-r", "--url url", "URL of the WITSML service") do |v|
     options[:url] = v
   end
@@ -46,7 +51,7 @@ end
 
 
 # Load the named file and return its contents as a string
-def get_file_as_string(filename)
+def get_file_as_string(filename, defs)
   data = ''
   if(filename)
     f = File.open(filename, "r")
@@ -55,6 +60,9 @@ def get_file_as_string(filename)
   end
 
   f.each_line do |line|
+    defs.each_key do |key|
+      line.gsub! "%#{key}%", defs[key]
+    end
     data += line
   end
   return data
@@ -68,7 +76,7 @@ if ( !options[:url] )
 end
 
 
-template= get_file_as_string(options[:query] )
+template= get_file_as_string(options[:query], options[:defs] )
 
 wmls = Wmls.new options[:url], options[:user_name], options[:password]
 
