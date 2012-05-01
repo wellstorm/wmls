@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<logs xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+<logs xmlns="http://www.witsml.org/schemas/1series" version="1.4.1.0">
    <log uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidLog%">
       <dataRowCount />
       <startIndex uom="">%startIndex%</startIndex>
@@ -8,10 +8,11 @@
          <mnemonic />
          <minIndex uom="" />
          <maxIndex uom="" />
-         <columnIndex />
       </logCurveInfo>
       <logData>
-         <data />
+        <mnemonicList/>
+        <unitList/>
+        <data />
       </logData>
    </log>
 </logs>
