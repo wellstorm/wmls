@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<logs xmlns="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+<logs xmlns="http://www.witsml.org/schemas/1series" version="1.4.1.0">
    <log uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidLog%">
       <nameWell />
       <nameWellbore />
@@ -22,7 +22,7 @@
       <startDateTimeIndex />
       <endDateTimeIndex />
       <direction />
-      <indexCurve columnIndex="" />
+      <indexCurve/>
       <nullValue />
       <logParam index="" name="" uom="" description="" />
       <logCurveInfo uid="">
@@ -38,7 +38,6 @@
          <maxIndex uom="" />
          <minDateTimeIndex />
          <maxDateTimeIndex />
-         <columnIndex />
          <curveDescription />
          <sensorOffset uom="" />
          <dataSource />
