@@ -15,6 +15,7 @@ Usage: wmls [options]
     -q, --query QUERYFILE            Path to file containing query, delete, add or update template
     -a cap|get|add|update|delete         WITSML action; default is 'get'
         --action
+    -o, --optionsin OPTIONSIN        optionsIn string (optional)    
     -h, --help                       Show this message
 
 Example:
