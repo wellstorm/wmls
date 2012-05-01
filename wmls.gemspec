@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{wmls}
-  s.version = "0.1.8"
+  s.version = "0.1.9"
   s.date = %q{2012-05-01}
   s.authors = ["Hugh Winkler"]
   s.email = %q{hugh.winkler@wellstorm.com}

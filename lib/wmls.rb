@@ -62,7 +62,7 @@ END
   end
 
   # call WMLS_AddToStore with the given template
-  def add_to_store(template)
+  def add_to_store(template, optionsIn=nil)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_AddToStore'
@@ -70,7 +70,7 @@ END
         <ns0:WMLS_AddToStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <XMLin>#{queryIn}</XMLin>
-            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <OptionsIn>#{optionsIn || @optionsIn}</OptionsIn>
             <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_AddToStore>
 END
@@ -78,7 +78,7 @@ END
   end
 
   # call WMLS_DeleteStore with the given template
-  def delete_from_store(template)
+  def delete_from_store(template, optionsIn = nil)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_DeleteFromStore'
@@ -86,7 +86,7 @@ END
         <ns0:WMLS_DeleteFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <QueryIn>#{queryIn}</QueryIn>
-            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <OptionsIn>#{optionsIn || @optionsIn}</OptionsIn>
             <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_DeleteFromStore>
 END
@@ -94,7 +94,7 @@ END
   end
 
   # call WMLS_UpdateInStore with the given template
-  def update_in_store(template)
+  def update_in_store(template, optionsIn=nil)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_UpdateInStore'
@@ -102,7 +102,7 @@ END
         <ns0:WMLS_UpdateInStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <XMLin>#{queryIn}</XMLin>
-            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <OptionsIn>#{optionsIn || @optionsIn}</OptionsIn>
             <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_UpdateInStore>
 END
@@ -110,7 +110,7 @@ END
   end
   
   # call WMLS_GetFromStore with the given template
-  def get_from_store(template)
+  def get_from_store(template, optionsIn=nil)
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetFromStore'
@@ -118,18 +118,18 @@ END
         <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
             <QueryIn>#{queryIn}</QueryIn>
-            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <OptionsIn>#{optionsIn || @optionsIn}</OptionsIn>
             <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_GetFromStore>
 END
     return send envelope_middle, soap_action
   end
 
-  def get_cap()
+  def get_cap(optionsIn=nil)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetCap'
     envelope_middle = <<END
         <ns0:WMLS_GetCap SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-            <OptionsIn>#{@optionsIn}</OptionsIn>
+            <OptionsIn>#{optionsIn || @optionsIn}</OptionsIn>
         </ns0:WMLS_GetCap>
 END
     return send envelope_middle, soap_action
