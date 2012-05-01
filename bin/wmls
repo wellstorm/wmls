@@ -40,7 +40,7 @@ opts =OptionParser.new do |o|
   o.on("-q", "--query QUERYFILE", "Path to file containing query, delete, add or update template. (optional, default stdin)") do |v|
     options[:query] = v
   end
-  o.on("-a", "--action ACTION", [:add,:get,:update,:delete], "WITSML action: add, get, update, or delete (optional, default 'get')") do |v|
+  o.on("-a", "--action ACTION", [:cap,:add,:get,:update,:delete], "WITSML action: cap, add, get, update, or delete (optional, default 'get')") do |v|
     options[:action] = v || :get
   end
   o.on_tail("-h", "--help", "Show this message") do
@@ -76,7 +76,7 @@ if ( !options[:url] )
 end
 
 
-template= get_file_as_string(options[:query], options[:defs] )
+template= get_file_as_string(options[:query], options[:defs] ) unless options[:action] == :cap
 
 wmls = Wmls.new options[:url], options[:user_name], options[:password]
 
@@ -87,6 +87,8 @@ case options[:action]
   result = wmls.delete_from_store(template)
   when :update
   result = wmls.update_in_store(template)
+  when :cap
+  result = wmls.get_cap
   when :get,nil
   result = wmls.get_from_store(template)
   else

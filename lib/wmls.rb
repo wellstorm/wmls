@@ -125,6 +125,16 @@ END
     return send envelope_middle, soap_action
   end
 
+  def get_cap()
+    soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetCap'
+    envelope_middle = <<END
+        <ns0:WMLS_GetCap SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+            <OptionsIn>#{@optionsIn}</OptionsIn>
+        </ns0:WMLS_GetCap>
+END
+    return send envelope_middle, soap_action
+  end
+
   private
 
   # Replace special xml chartacters '&' and '<'
@@ -154,6 +164,7 @@ END
     s = ''
     doc.root.each_element('//Result') { |elt| r = elt.text}  
     doc.root.each_element('//XMLout') { |elt| x = pretty_xml(elt.text)}  
+    doc.root.each_element('//CapabilitiesOut') { |elt| x = pretty_xml(elt.text)}  
     doc.root.each_element('//SuppMsgOut') { |elt| s = elt.text }  
     return [r.to_i,s,x];
   end
