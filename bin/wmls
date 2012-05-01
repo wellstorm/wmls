@@ -43,6 +43,9 @@ opts =OptionParser.new do |o|
   o.on("-a", "--action ACTION", [:cap,:add,:get,:update,:delete], "WITSML action: cap, add, get, update, or delete (optional, default 'get')") do |v|
     options[:action] = v || :get
   end
+  o.on("-o", "--optionsin OPTIONSIN",  "optionsIn string (optional)") do |v|
+    options[:optionsin] = v || ""
+  end
   o.on_tail("-h", "--help", "Show this message") do
     puts o
     exit
@@ -82,15 +85,15 @@ wmls = Wmls.new options[:url], options[:user_name], options[:password]
 
 case options[:action]
   when :add
-  result = wmls.add_to_store(template)
+  result = wmls.add_to_store(template, options[:optionsin])
   when :delete
-  result = wmls.delete_from_store(template)
+  result = wmls.delete_from_store(template, options[:optionsin])
   when :update
-  result = wmls.update_in_store(template)
+  result = wmls.update_in_store(template, options[:optionsin])
   when :cap
-  result = wmls.get_cap
+  result = wmls.get_cap options[:optionsin]
   when :get,nil
-  result = wmls.get_from_store(template)
+  result = wmls.get_from_store(template, options[:optionsin])
   else
   raise "unsupported action #{options[:action]}"
 end
