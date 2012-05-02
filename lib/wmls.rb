@@ -125,6 +125,7 @@ END
     return send envelope_middle, soap_action
   end
 
+  # call WMLS_GetCap with the specified optionsIn. 
   def get_cap(optionsIn=nil)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetCap'
     envelope_middle = <<END
@@ -137,7 +138,7 @@ END
 
   private
 
-  # Replace special xml chartacters '&' and '<'
+  # Replace special xml characters '&' and '<'
   def escape_xml(xml_in) 
     return xml_in.gsub(/&/,'&amp;').gsub(/</,'&lt;')
   end
