@@ -62,10 +62,11 @@ END
   end
 
   # call WMLS_AddToStore with the given template
-  def add_to_store(template, optionsIn=nil)
+  def add_to_store(template, optionsIn=nil, headers={})
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_AddToStore'
+    headers['SOAPAction'] = soap_action
     envelope_middle = <<END
         <ns0:WMLS_AddToStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
@@ -74,14 +75,15 @@ END
             <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_AddToStore>
 END
-    return send envelope_middle, soap_action
+    return send envelope_middle, headers
   end
 
   # call WMLS_DeleteStore with the given template
-  def delete_from_store(template, optionsIn = nil)
+  def delete_from_store(template, optionsIn = nil, headers={})
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_DeleteFromStore'
+    headers['SOAPAction'] = soap_action
     envelope_middle = <<END
         <ns0:WMLS_DeleteFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
@@ -90,14 +92,15 @@ END
             <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_DeleteFromStore>
 END
-    return send envelope_middle, soap_action
+    return send envelope_middle, headers
   end
 
   # call WMLS_UpdateInStore with the given template
-  def update_in_store(template, optionsIn=nil)
+  def update_in_store(template, optionsIn=nil, headers={})
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_UpdateInStore'
+    headers['SOAPAction'] = soap_action
     envelope_middle = <<END
         <ns0:WMLS_UpdateInStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
@@ -106,14 +109,15 @@ END
             <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_UpdateInStore>
 END
-    return send envelope_middle, soap_action
+    return send envelope_middle, headers
   end
   
   # call WMLS_GetFromStore with the given template
-  def get_from_store(template, optionsIn=nil)
+  def get_from_store(template, optionsIn=nil, headers={})
     wmlTypeIn = extract_type(template)
     queryIn = escape_xml(template)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetFromStore'
+    headers['SOAPAction'] = soap_action
     envelope_middle = <<END
         <ns0:WMLS_GetFromStore SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <WMLtypeIn>#{wmlTypeIn}</WMLtypeIn>
@@ -122,18 +126,19 @@ END
             <CapabilitiesIn>#{@capabilitiesIn}</CapabilitiesIn>
         </ns0:WMLS_GetFromStore>
 END
-    return send envelope_middle, soap_action
+    return send envelope_middle, headers
   end
 
   # call WMLS_GetCap with the specified optionsIn. 
-  def get_cap(optionsIn=nil)
+  def get_cap(optionsIn=nil, headers=nil)
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetCap'
+    headers['SOAPAction'] = soap_action
     envelope_middle = <<END
         <ns0:WMLS_GetCap SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <OptionsIn>#{optionsIn || @optionsIn}</OptionsIn>
         </ns0:WMLS_GetCap>
 END
-    return send envelope_middle, soap_action
+    return send envelope_middle, headers 
   end
 
   private
@@ -171,7 +176,7 @@ END
   end
 
 
-  def post(io, url, user, pass, soap_action)    
+  def post(io, url, user, pass, headers)    
     url = URI.parse(url)  if url.is_a? String
     io = StringIO.new(io) if io.is_a? String
 
@@ -180,7 +185,8 @@ END
     req.body_stream = io
 
     #soap 1.1:
-    req.add_field('SOAPAction', soap_action)
+    #req.add_field('SOAPAction', soap_action)
+    headers.each_pair {|header, value| req.add_field(header, value)}
     req.content_type = 'text/xml' 
 
     #soap 1.2 would replace the above with:
@@ -204,9 +210,9 @@ END
   end
 
 
-  def send(envelope_middle, soap_action)
+  def send(envelope_middle, headers)
     envelope = @envelope_begin + envelope_middle + @envelope_end
-    response = post(envelope, @url, @user_name, @password, soap_action)
+    response = post(envelope, @url, @user_name, @password, headers)
     status, supp_msg, witsml = extract_response(response.body)
   end
 
