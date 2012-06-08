@@ -130,7 +130,7 @@ END
   end
 
   # call WMLS_GetCap with the specified optionsIn. 
-  def get_cap(optionsIn=nil, headers=nil)
+  def get_cap(optionsIn=nil, headers={})
     soap_action = 'http://www.witsml.org/action/120/Store.WMLS_GetCap'
     headers['SOAPAction'] = soap_action
     envelope_middle = <<END
