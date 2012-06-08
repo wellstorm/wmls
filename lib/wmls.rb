@@ -213,7 +213,7 @@ END
   def send(envelope_middle, headers)
     envelope = @envelope_begin + envelope_middle + @envelope_end
     response = post(envelope, @url, @user_name, @password, headers)
-    status, supp_msg, witsml = extract_response(response.body)
+    extract_response(response.body)
   end
 
 
