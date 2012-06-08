@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = %q{wmls}
-  s.version = "0.1.11"
-  s.date = %q{2012-05-01}
+  s.version = "0.1.13"
+  s.date = %q{2012-06-08}
   s.authors = ["Hugh Winkler"]
   s.email = %q{hugh.winkler@wellstorm.com}
   s.summary = %q{Calls GetCap, GetFromStore, AddToStore, UpdateInStore, or DeleteFromStore on a WITSML server.}

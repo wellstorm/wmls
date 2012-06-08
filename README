@@ -31,4 +31,5 @@ History:
 16 Oct 2011 -- added -D option to wmls command line tool  (0.1.7)
 01 May 2012 -- added GetCap support (0.1.8)
 01 May 2012 -- added support for capabilitiesIn parameter to all calls (0.1.9)
-
+04 May 2012 -- added support for a headers parameter to all calls (0.1.11)
+07 May 2012 -- fix headers param to get_cap (default should be {}) (0.1.13)
