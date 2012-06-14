@@ -102,6 +102,8 @@ end
 status, supp_msg, witsml = result
 if (status != 1)
   $stderr.puts "Error #{status}: #{supp_msg}"
+  status
 else
   $stdout.puts witsml
+  0
 end
