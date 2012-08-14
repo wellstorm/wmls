@@ -31,6 +31,9 @@ opts =OptionParser.new do |o|
   o.on("-r", "--url url", "URL of the WITSML service") do |v|
     options[:url] = v
   end
+  o.on("-t", "--timeout seconds", "timeout in seconds (optional, default 60)") do |v|
+    options[:timeout] = v
+  end
   o.on("-u", "--username USER", "HTTP user name (optional)") do |v|
     options[:user_name] = v
   end
@@ -82,6 +85,7 @@ end
 template= get_file_as_string(options[:query], options[:defs] ) unless options[:action] == :cap
 
 wmls = Wmls.new options[:url], options[:user_name], options[:password]
+wmls.timeout = options[:timeout].to_i if (options[:timeout])
 
 case options[:action]
   when :add

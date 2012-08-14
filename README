@@ -10,6 +10,7 @@ Usage: wmls [options]
     -Dvariable=value                 Replace occurrences of %variable% with value, in the query template
     -v, --verbose                    Run verbosely
     -r, --url url                    URL of the WITSML service
+    -t, --timeout seconds            timeout in seconds (optional, default 60)
     -u, --username USER              HTTP user name
     -p, --password PASS              HTTP password
     -q, --query QUERYFILE            Path to file containing query, delete, add or update template
@@ -34,3 +35,4 @@ History:
 04 May 2012 -- added support for a headers parameter to all calls (0.1.11)
 07 May 2012 -- fix headers param to get_cap (default should be {}) (0.1.13)
 14 Jun 2012 -- return values to shell from wmls script (0.1.14)
+14 Aug 2012 -- add timeout option to wmls script
