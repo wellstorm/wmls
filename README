@@ -24,6 +24,7 @@ wmls -q query_v1311/get_all_wells.xml -r https://witsml.wellstorm.com/witsml/ser
 
 I've included a bunch of sample query templates originally created by Gary Masters of Energistics. 
 
+wmls files: Copyright 2012 Welstorm Development
 License: Apache 2.0
 
 History:
