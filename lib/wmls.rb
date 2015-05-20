@@ -167,7 +167,7 @@ END
     x = ''
     s = ''
     doc.xpath('//Result').each() { |elt| r = elt.text }
-    doc.xpath('//XMLout')each() { |elt| x = pretty_xml(elt.text) }
+    doc.xpath('//XMLout').each() { |elt| x = pretty_xml(elt.text) }
     doc.xpath('//CapabilitiesOut').each() { |elt| x = pretty_xml(elt.text) }
     doc.xpath('//SuppMsgOut').each() { |elt| s = elt.text }
     return [r.to_i,s,x];
