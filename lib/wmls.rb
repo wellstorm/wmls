@@ -18,7 +18,7 @@ require 'net/http'
 require 'net/https'
 require 'uri'
 require 'stringio'
-require 'rexml/document'
+require 'nokogiri'
 
 # A WITSML client library. 
 #
@@ -149,29 +149,27 @@ END
   end
 
   def pretty_xml(xml_data)
-    s = ''
-    doc = REXML::Document.new(xml_data)
-    doc.write(s, 2)
-    return s
+    doc = Nokogiri::XML(xml_data)
+    return doc.to_xml
   end
 
   # parse the xml and return the singular of the root element name.
   def extract_type(xml_data)
-    doc = REXML::Document.new(xml_data)
+    doc = Nokogiri::XML(xml_data)
     plural = doc.root.name
     return plural[0..plural.length-2]
   end
 
   #extract the witsml response: status_code and xml_out
   def extract_response(xml_data)
-    doc = REXML::Document.new(xml_data)
+    doc = Nokogiri::XML(xml_data)
     r = 0
     x = ''
     s = ''
-    doc.root.each_element('//Result') { |elt| r = elt.text}  
-    doc.root.each_element('//XMLout') { |elt| x = pretty_xml(elt.text)}  
-    doc.root.each_element('//CapabilitiesOut') { |elt| x = pretty_xml(elt.text)}  
-    doc.root.each_element('//SuppMsgOut') { |elt| s = elt.text }  
+    doc.xpath('//Result').each() { |elt| r = elt.text }
+    doc.xpath('//XMLout')each() { |elt| x = pretty_xml(elt.text) }
+    doc.xpath('//CapabilitiesOut').each() { |elt| x = pretty_xml(elt.text) }
+    doc.xpath('//SuppMsgOut').each() { |elt| s = elt.text }
     return [r.to_i,s,x];
   end
 
