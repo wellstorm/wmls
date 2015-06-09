@@ -3,7 +3,7 @@
    <log uidWell="%uidWell%" uidWellbore="%uidWellbore%" uid="%uidLog%">
       <dataRowCount />
       <startDateTimeIndex>%startDateTimeIndex%</startDateTimeIndex>
-      <endDateTimeIndex>%endDateTimeIndex%</startDateTimeIndex>
+      <endDateTimeIndex>%endDateTimeIndex%</endDateTimeIndex>
       <logCurveInfo>
          <mnemonic />
          <minDateTimeIndex />
