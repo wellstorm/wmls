@@ -37,5 +37,5 @@ History:
 07 May 2012 -- fix headers param to get_cap (default should be {}) (0.1.13)
 14 Jun 2012 -- return values to shell from wmls script (0.1.14)
 14 Aug 2012 -- add timeout option to wmls script
-18 Jul 2015 -- replace REXML with nokogiri, and fix missing endDateTimeIndex (10.1.6)
+18 Jul 2015 -- replace REXML with nokogiri, and fix missing endDateTimeIndex (0.1.16)
                (thanks emre.demirors and alex.bednarczyk)
