@@ -39,3 +39,5 @@ History:
 14 Aug 2012 -- add timeout option to wmls script
 18 Jul 2015 -- replace REXML with nokogiri, and fix missing endDateTimeIndex (0.1.16)
                (thanks emre.demirors and alex.bednarczyk)
+21 Jul 2015 -- revert back to REXML. (nokogiri gem install too fragile) (0.1.17)
+
