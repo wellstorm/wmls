@@ -1,14 +1,13 @@
 Gem::Specification.new do |s|
   s.name = %q{wmls}
-  s.version = "0.1.17"
-  s.date = %q{2015-07-21}
+  s.version = "1.0.0"
+  s.date = %q{2016-04-19}
   s.authors = ["Hugh Winkler"]
-  s.add_runtime_dependency "nokogiri", "~>1.6", "~>1.6"
-  s.email = %q{hugh.winkler@wellstorm.com}
+  s.email = %q{hughw@hughw.net}
   s.summary = %q{Calls GetCap, GetFromStore, AddToStore, UpdateInStore, or DeleteFromStore on a WITSML server.}
   s.homepage = %q{https://github.com/wellstorm/wmls/}
   s.description = %q{Wmls calls GetCap, GetFromStore, AddToStore, UpdateInStore, or DeleteFromStore on a WITSML server.}
-  s.files = [ "README", "LICENSE", "lib/wmls.rb"]
+  s.files = [ "README.md", "LICENSE", "lib/wmls.rb"]
   s.executables = [ "wmls" ]
-  s.licenses = ["Apache-2.0"]
+  s.licenses=["Apache-2.0"]
 end

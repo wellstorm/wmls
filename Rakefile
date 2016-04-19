@@ -1,8 +1,8 @@
 directory "lib"
 
-file "wmls-0.1.17.gem"  => ["wmls.gemspec", "lib/wmls.rb", "bin/wmls"] do
+file "wmls-1.0.0.gem"  => ["wmls.gemspec", "lib/wmls.rb", "bin/wmls"] do
   sh "gem build wmls.gemspec"
 end
 
-task :default => "wmls-0.1.17.gem"
+task :default => "wmls-1.0.0.gem"
 
