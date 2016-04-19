@@ -61,3 +61,4 @@ Apache 2.0
 21 Jul 2015 -- revert back to REXML. (nokogiri install too fragile) (0.1.18)  (do not install this version)  
 19 Apr 2016 -- revert back to 0.1.15 plus endDateTimeIndex fix (1.0.0)  
 
+[![Gem Version](https://badge.fury.io/rb/wmls.svg)](https://badge.fury.io/rb/wmls)
