@@ -43,12 +43,13 @@ Pass substitution values for these values on the wmls command line, e.g:
 
 ```
   wmls -DuidWell=ABC -DuidWellbore=1234 -q...
- ```
+```
 
 ##License
 Apache 2.0
 
 ##History
+
 10 Mar 2011 -- initial commit.  
 16 Oct 2011 -- added -D option to wmls command line tool  (0.1.7)  
 01 May 2012 -- added GetCap support (0.1.8)  
@@ -61,5 +62,6 @@ Apache 2.0
 21 Jul 2015 -- revert back to REXML. (nokogiri install too fragile) (0.1.18)  (do not install this version)  
 19 Apr 2016 -- revert back to 0.1.15 plus endDateTimeIndex fix (1.0.0)  
 20 Apr 2016 -- enlarge REXML parameter to permit parsing up to 1GB responses (1.0.1)  
+20 Apr 2016 -- really support -v parameter, for verbose diagnostics (1.0.2)  
 
 [![Gem Version](https://badge.fury.io/rb/wmls.svg)](https://badge.fury.io/rb/wmls)

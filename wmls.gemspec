@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{wmls}
-  s.version = "1.0.1"
+  s.version = "1.0.2"
   s.date = %q{2016-04-20}
   s.authors = ["Hugh Winkler"]
   s.email = %q{hughw@hughw.net}
@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
   s.files = [ "README.md", "LICENSE", "lib/wmls.rb"]
   s.executables = [ "wmls" ]
   s.licenses=["Apache-2.0"]
+  s.required_ruby_version = '>= 1.8.7.376'
 end

@@ -35,6 +35,9 @@ class Wmls
   # The HTTP timeout in seconds (default 60)
   attr_accessor :timeout
 
+  # Shouls we run verbosely
+  attr_accessor :verbose
+
   # Construct a new Wmls instance. 
   # url The URL of the remote WMLS service
   # user_name, password Credentials for the remote service
@@ -47,6 +50,7 @@ class Wmls
     @optionsIn = ''
     @capabilitiesIn = ''
     @timeout = 60
+    @verbose = false
 
     @envelope_begin = <<END
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
@@ -216,7 +220,13 @@ END
 
   def send(envelope_middle, headers)
     envelope = @envelope_begin + envelope_middle + @envelope_end
+    $stderr.puts headers if @verbose
+    $stderr.puts envelope if @verbose
+    
     response = post(envelope, @url, @user_name, @password, headers)
+    
+    $stderr.puts response.to_hash if @verbose
+    $stderr.puts response.body if @verbose
     extract_response(response.body)
   end
 

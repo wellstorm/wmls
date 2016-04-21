@@ -20,9 +20,9 @@ options = {:defs => {}}
 
 opts =OptionParser.new do |o|
   o.banner = "Usage: wmls [options]"
-#  o.on("-v", "--verbose", "Run verbosely") do |v|
-#    options[:verbose] = v
-#  end
+  o.on("-v", "--verbose", "Print request and response headers and SOAP bodies to stderr") do |v|
+    options[:verbose] = v
+  end
   o.on("-DVARIABLE=VALUE", "Define a substitution variable. Use this multiple times to replace %variable% with value in the template.") do |v|
     m = /([a-zA-Z0-9_]*)=(.*)/.match(v.to_s)
     #puts " -D #{m[1]} = #{m[2]}"
@@ -86,7 +86,7 @@ template= get_file_as_string(options[:query], options[:defs] ) unless options[:a
 
 wmls = Wmls.new options[:url], options[:user_name], options[:password]
 wmls.timeout = options[:timeout].to_i if (options[:timeout])
-
+wmls.verbose = options[:verbose] if (options[:verbose])
 case options[:action]
   when :add
   result = wmls.add_to_store(template, options[:optionsin])
