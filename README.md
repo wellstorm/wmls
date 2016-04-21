@@ -42,7 +42,7 @@ Inspect the templates you want to use to determine the variables you need to rep
 Pass substitution values for these values on the wmls command line, e.g:
 
 ```
-  wmls -DuidWell=ABC -DuidWellbore=1234 ...
+  wmls -DuidWell=ABC -DuidWellbore=1234 -q...
  ```
 
 ##License
@@ -60,5 +60,6 @@ Apache 2.0
 18 Jul 2015 -- replace REXML with nokogiri, and fix missing endDateTimeIndex (0.1.16)   (thanks emre.demirors and alex.bednarczyk)  
 21 Jul 2015 -- revert back to REXML. (nokogiri install too fragile) (0.1.18)  (do not install this version)  
 19 Apr 2016 -- revert back to 0.1.15 plus endDateTimeIndex fix (1.0.0)  
+20 Apr 2016 -- enlarge REXML parameter to permit parsing up to 1GB responses (1.0.1)  
 
 [![Gem Version](https://badge.fury.io/rb/wmls.svg)](https://badge.fury.io/rb/wmls)
