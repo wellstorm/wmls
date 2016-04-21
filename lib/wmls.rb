@@ -59,6 +59,10 @@ END
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 END
+    # Permit parsing really large WITSML files (1GB)
+    REXML::Document::entity_expansion_text_limit=1024*1024*1024
+
+
   end
 
   # call WMLS_AddToStore with the given template
