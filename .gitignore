@@ -1,3 +1,4 @@
 *.gem
 \[SRC_LIST\]
 .DS_Store
+.vscode
