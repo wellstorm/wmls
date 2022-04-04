@@ -15,7 +15,7 @@
 
 require 'rubygems'
 require 'optparse'
-require 'wmls'
+require_relative '../lib/wmls'
 options = {:defs => {}}
 
 opts =OptionParser.new do |o|
