@@ -63,5 +63,6 @@ Apache 2.0
 19 Apr 2016 -- revert back to 0.1.15 plus endDateTimeIndex fix (1.0.0)  
 20 Apr 2016 -- enlarge REXML parameter to permit parsing up to 1GB responses (1.0.1)  
 20 Apr 2016 -- really support -v parameter, for verbose diagnostics (1.0.2)  
+04 Apr 2022 -- Remove shebang, require ruby >= 2.7.5 (1.0.3)  
 
 [![Gem Version](https://badge.fury.io/rb/wmls.svg)](https://badge.fury.io/rb/wmls)
