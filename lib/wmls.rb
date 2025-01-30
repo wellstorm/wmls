@@ -42,7 +42,7 @@ class Wmls
   # url The URL of the remote WMLS service
   # user_name, password Credentials for the remote service
 
-  def initialize (url, user_name, password)
+  def initialize(url, user_name, password)
     @url = url
     @user_name = user_name
     @password = password
