@@ -104,10 +104,7 @@ end
 
 
 status, supp_msg, witsml = result
-if (status != 1)
-  $stderr.puts "Error #{status}: #{supp_msg}"
-  status
-else
-  $stdout.puts witsml
-  0
-end
+$stderr.puts "Status #{status}; message: #{supp_msg}" if status != 1
+$stdout.puts witsml if status > 0
+status  == 1 ? exit(0) : exit(1)
+
