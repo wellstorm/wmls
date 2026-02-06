@@ -13,12 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'rubygems'
-require 'optparse'
-require_relative '../lib/wmls'
-options = {:defs => {}}
+require "rubygems"
+require "optparse"
+require_relative "../lib/wmls"
+options = { :defs => {} }
 
-opts =OptionParser.new do |o|
+opts = OptionParser.new do |o|
   o.banner = "Usage: wmls [options]"
   o.on("-v", "--verbose", "Print request and response headers and SOAP bodies to stderr") do |v|
     options[:verbose] = v
@@ -43,10 +43,10 @@ opts =OptionParser.new do |o|
   o.on("-q", "--query QUERYFILE", "Path to file containing query, delete, add or update template. (optional, default stdin)") do |v|
     options[:query] = v
   end
-  o.on("-a", "--action ACTION", [:cap,:add,:get,:update,:delete], "WITSML action: cap, add, get, update, or delete (optional, default 'get')") do |v|
+  o.on("-a", "--action ACTION", [:cap, :add, :get, :update, :delete], "WITSML action: cap, add, get, update, or delete (optional, default 'get')") do |v|
     options[:action] = v || :get
   end
-  o.on("-o", "--optionsin OPTIONSIN",  "optionsIn string (optional)") do |v|
+  o.on("-o", "--optionsin OPTIONSIN", "optionsIn string (optional)") do |v|
     options[:optionsin] = v || ""
   end
   o.on_tail("-h", "--help", "Show this message") do
@@ -55,11 +55,10 @@ opts =OptionParser.new do |o|
   end
 end
 
-
 # Load the named file and return its contents as a string
 def get_file_as_string(filename, defs)
-  data = ''
-  if(filename)
+  data = ""
+  if (filename)
     f = File.open(filename, "r")
   else
     f = $stdin
@@ -74,37 +73,37 @@ def get_file_as_string(filename, defs)
   return data
 end
 
-
 opts.parse!
-if ( !options[:url] )
+if (!options[:url])
   puts(opts.help)
   exit 1
 end
 
-
-template= get_file_as_string(options[:query], options[:defs] ) unless options[:action] == :cap
+template = get_file_as_string(options[:query], options[:defs]) unless options[:action] == :cap
 
 wmls = Wmls.new options[:url], options[:user_name], options[:password]
 wmls.timeout = options[:timeout].to_i if (options[:timeout])
 wmls.verbose = options[:verbose] if (options[:verbose])
 case options[:action]
-  when :add
+when :add
   result = wmls.add_to_store(template, options[:optionsin])
-  when :delete
+when :delete
   result = wmls.delete_from_store(template, options[:optionsin])
-  when :update
+when :update
   result = wmls.update_in_store(template, options[:optionsin])
-  when :cap
+when :cap
   result = wmls.get_cap options[:optionsin]
-  when :get,nil
+when :get, nil
   result = wmls.get_from_store(template, options[:optionsin])
-  else
+else
   raise "unsupported action #{options[:action]}"
 end
 
-
 status, supp_msg, witsml = result
-$stderr.puts "Status #{status}; message: #{supp_msg}" if status != 1
-$stdout.puts witsml if status > 0
-status  == 1 ? exit(0) : exit(1)
-
+if (status < 0)
+  $stderr.puts "Error #{status}: #{supp_msg}"
+  status
+else
+  $stdout.puts witsml
+  0
+end
