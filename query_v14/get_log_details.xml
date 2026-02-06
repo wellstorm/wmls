@@ -7,7 +7,7 @@
       <objectGrowing />
       <curveSensorsAligned />
       <dataGroup />
-      <dataRowCount />
+      <!-- <dataRowCount /> -->
       <serviceCompany />
       <runNumber />
       <bhaRunNumber />
